@@ -34,7 +34,7 @@ class QinrenSpider(scrapy.Spider):
         for a in response:
             item = QingrenjieItem()
             item["title"] = a['title']
-            answer = []
+
             b = a['list']
             num = len(b)
             if 0 < num:
@@ -45,6 +45,5 @@ class QinrenSpider(scrapy.Spider):
                 item['C'] = b[2]['title']
             if 3 < num:
                 item['D'] = b[3]['title']
-                # answer.append(b['title'])
-            # item["answer"] = answer
+
             yield item
