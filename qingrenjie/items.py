@@ -16,3 +16,9 @@ class QingrenjieItem(scrapy.Item):
     B = scrapy.Field()
     C = scrapy.Field()
     D = scrapy.Field()
+
+
+class imageItem(scrapy.Item):
+    nickname = scrapy.Field()
+    imagePath = scrapy.Field()
+    imageurl = scrapy.Field()
