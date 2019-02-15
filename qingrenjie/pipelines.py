@@ -9,6 +9,7 @@ import pymongo
 from scrapy.exceptions import DropItem
 from scrapy.http import Request
 from scrapy.pipelines.images import ImagesPipeline
+import pymysql
 
 
 class QingrenjiePipeline(object):
@@ -31,8 +32,32 @@ class imageTest(ImagesPipeline):
         yield Request(image_url)
 
     def item_completed(self, results, item, info):
-        image_paths = [x['path'] for ok , x in results if ok]
+        image_paths = [x['path'] for ok, x in results if ok]
         if not image_paths:
             raise DropItem("Item contains no images")
         item['image_paths'] = image_paths
+        return item
+
+
+class mysqltest(object):
+    def __init__(self):
+        self.db = None
+        self.cursor = None
+
+    def process_item(self, item, spider):
+        self.db = pymysql.connect(host="localhost", user='root', passwd='shizhijie', db='python3')
+        self.cursor = self.db.cursor()
+
+        nickname = item["nickname"]
+        imageurl = item['imageurl']
+
+        insert_sql = "INSERT INTO image (nickname, imageurl) VALUES (%s,%s)"
+        try:
+            self.cursor.execute(insert_sql, (nickname, imageurl))
+            self.db.commit()
+        except Exception as e:
+            print('问题数据跳过.......', e)
+            self.db.rollback()
+        self.cursor.close()
+        self.db.close()
         return item

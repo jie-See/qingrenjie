@@ -70,7 +70,8 @@ ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {
     # 'qingrenjie.pipelines.QingrenjiePipeline': 300,
     #  'qingrenjie.Pipelines.MongoPipeline': 301,
-   'qingrenjie.pipelines.imageTest': 200,
+    # 'qingrenjie.pipelines.imageTest': 302,
+    'qingrenjie.pipelines.mysqltest': 303,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -97,3 +98,4 @@ ITEM_PIPELINES = {
 MONGOCLIENT = 'localhost'
 DB = 'problems'
 FEED_EXPORT_ENCODING = 'gbk'
+# scrapy crawl 项目名 -o 文件名.csv -s FEED_EXPORT_ENCIDING=utf-8
