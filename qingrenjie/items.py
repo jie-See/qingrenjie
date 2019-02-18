@@ -22,3 +22,9 @@ class imageItem(scrapy.Item):
     nickname = scrapy.Field()
     imagePath = scrapy.Field()
     imageurl = scrapy.Field()
+
+
+class imageItem(scrapy.Item):
+    title = scrapy.Field()
+    city = scrapy.Field()
+    time = scrapy.Field()

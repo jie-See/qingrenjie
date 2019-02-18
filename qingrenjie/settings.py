@@ -71,7 +71,8 @@ ITEM_PIPELINES = {
     # 'qingrenjie.pipelines.QingrenjiePipeline': 300,
     #  'qingrenjie.Pipelines.MongoPipeline': 301,
     # 'qingrenjie.pipelines.imageTest': 302,
-    'qingrenjie.pipelines.mysqltest': 303,
+    # 'qingrenjie.pipelines.mysqltest': 303,
+    'qingrenjie.pipelines.excelsave': 304,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
